@@ -10,7 +10,7 @@ namespace ConsoleApp7
     {
         static void printStars(int[] star)
         {
-            for(int i =0; i< star.Length; i++)
+            for (int i = 0; i < star.Length; i++)
             {
                 for (int j = 0; j < star[i]; j++)
                     Console.Write("*");
@@ -18,23 +18,23 @@ namespace ConsoleApp7
             }
         }
 
-        static void printNumbers(int[] numbers) 
+        static void printNumbers(int[] numbers)
         {
             for (int i = 0; i < numbers.Length; i++)
             {
-                for(int j = 1 ; j <= numbers[i]; j++)
+                for (int j = 1; j <= numbers[i]; j++)
                 {
                     Console.Write(j);
                 }
                 Console.WriteLine();
             }
-        } 
+        }
 
-        static void printReverseNumbers(int[] numbers) 
+        static void printReverseNumbers(int[] numbers)
         {
             for (int i = 0; i < numbers.Length; i++)
             {
-                for(int j = numbers[i]; j > 0; j--)
+                for (int j = numbers[i]; j > 0; j--)
                 {
                     Console.Write(j);
                 }
@@ -44,70 +44,74 @@ namespace ConsoleApp7
 
         static void reverseSquared(int[] numbers)
         {
-            for(int i =numbers.Length-1 ; i >= 0; i--)
+            for (int i = numbers.Length - 1; i >= 0; i--)
             {
-                Console.WriteLine(Math.Pow(numbers[i], 2)); 
+                Console.WriteLine(Math.Pow(numbers[i], 2));
             }
         }
 
         static int[] createAndReadArr(int size)
         {
             int[] arr = new int[size];
-            for (int i = 0;i < size; i++)
+            for (int i = 0; i < size; i++)
             {
-                Console.WriteLine("enter num " + (i+1));
+                Console.WriteLine("enter num " + (i + 1));
                 arr[i] = int.Parse(Console.ReadLine());
             }
             return arr;
         }
 
+        //prints an array.
         static void printArr(int[] arr)
         {
             Console.Write("{");
-            for(int i = 0; i < arr.Length ; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 Console.Write(arr[i]);
                 Console.Write(" ");
             }
             Console.WriteLine("}");
         }
-        
+
+        //gives you the max value of an array.
         static int maxGrade(int[] arr)
         {
             int max = arr[0];
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                if( arr[i] > max)
+                if (arr[i] > max)
                     max = arr[i];
             }
             return max;
-        }    
-        
+        }
+
+        //gives you the min value of an array.
         static int minGrade(int[] arr)
         {
             int min = arr[0];
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                if( arr[i] < min)
+                if (arr[i] < min)
                     min = arr[i];
             }
             return min;
-        }        
+        }
 
+        //calculates the averge value of an array.
         static double avergeGrade(int[] arr)
         {
             double averge = 0;
             int count = 0;
             double sum = 0;
 
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 sum += arr[i];
                 count++;
             }
 
             averge = sum / count;
-            return averge;           
+            return averge;
         }
 
         //ממוצה
@@ -115,22 +119,35 @@ namespace ConsoleApp7
         {
             double averge = avergeGrade(arr);
             int count = 0;
-            for(int i = 0;i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                if(arr[i] > averge)
+                if (arr[i] > averge)
                     count++;
             }
             return count;
         }
+
+        //A function that cycles a number in an array by a given number.
+        static int[] leftCycle(int[] arr, int cycles)
+        {
+            for(int i = 0;i < cycles;i++)
+            {
+                int temp = arr[0];
+                for (int j = 0; j< arr.Length-1; j++)
+                {
+                    arr[j] = arr[j+1];
+                }
+                arr[arr.Length-1] = temp;
+            }
+            return arr;
+        }
+
+
         static void Main(string[] args)
         {
-            
-            int[] arr = createAndReadArr(5);
-            printArr(arr);
-            Console.WriteLine("max grade is: "+ maxGrade(arr));
-            Console.WriteLine("min grade is: "+ minGrade(arr));
-            Console.WriteLine("averge is: " + avergeGrade(arr));
-            Console.WriteLine("people with grade above averge: " + aboveAverge(arr));
+            int[] arr = { 1, 2, 3, 4, 5 };
+            int[] arr1 = leftCycle(arr, 2);
+            printArr(arr1);
         }
     }
 }
