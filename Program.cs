@@ -50,6 +50,7 @@ namespace ConsoleApp7
             }
         }
 
+        //creates an array
         static int[] createAndReadArr(int size)
         {
             int[] arr = new int[size];
@@ -143,11 +144,69 @@ namespace ConsoleApp7
         }
 
 
+        //עזרא
+        static bool HadAppearBefore(char[] arr, int index)
+        {
+            for(int i = 0; i < index; i++)
+            {
+                if (arr[index] == arr[i])
+                    return true;               
+            }
+            return false;
+        }
+
+        static int PrintRemoveDups(char[] arr)
+        {
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if(!HadAppearBefore(arr, i))
+                {
+                    Console.Write(arr[i]);
+                    Console.Write(" ");
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        static int countUnique(char[] arr)
+        {
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if(!HadAppearBefore(arr, i))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        static char[] CreateUnique(char[] arr, char[] arr1)
+        {
+            int j = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (!HadAppearBefore(arr, i))
+                {
+                    arr1[j] = arr[i];
+                    j++;
+                }
+            }
+            return arr1;
+        }
+
+
         static void Main(string[] args)
         {
-            int[] arr = { 1, 2, 3, 4, 5 };
-            int[] arr1 = leftCycle(arr, 2);
-            printArr(arr1);
+            char[] chars = { 'a', 'b', 'a', 'c', 'b' };
+
+            char[] arr = new char[countUnique(chars)];
+            arr = CreateUnique(chars, arr);
+            for (int i = 0; i < arr.Length; i++) { 
+                Console.Write(arr [i]);   
+            }
         }
     }
 }
