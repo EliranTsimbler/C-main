@@ -99,7 +99,7 @@ namespace ConsoleApp7
         }
 
         //calculates the averge value of an array.
-        static double avergeGrade(int[] arr)
+        static double averageValue(int[] arr)
         {
             double averge = 0;
             int count = 0;
@@ -116,9 +116,9 @@ namespace ConsoleApp7
         }
 
         //ממוצה
-        static int aboveAverge(int[] arr)
+        static int aboveAverage(int[] arr)
         {
-            double averge = avergeGrade(arr);
+            double averge = averageValue(arr);
             int count = 0;
             for (int i = 0; i < arr.Length; i++)
             {
@@ -197,16 +197,36 @@ namespace ConsoleApp7
             return arr1;
         }
 
+        static void CowData()
+        {
+            int sum = 0;         
+            Random random = new Random();
+            int cows = 3;
+            int[] cowData = new int[cows];
+            for(int i = 0;i < 30; i++)
+            {
+                for(int j = 0; j < cows; j++)
+                {
+                    //Console.WriteLine("enter cow data for cow "+ (j+1) + " in day " + (i+1));
+                    //cowData[j] = int.Parse(Console.ReadLine());
+                    cowData[j] = random.Next(cows);
+                    sum += cowData[j];
+                }
+            }
+            int average = sum / cows;
+
+            Console.WriteLine("cows below averge: ");
+            for (int i = 0; i< cowData.Length ; i++)
+            {
+                if (cowData[i] < average)
+                    Console.Write(i+1+ " ,");
+            }
+        }
 
         static void Main(string[] args)
         {
-            char[] chars = { 'a', 'b', 'a', 'c', 'b' };
 
-            char[] arr = new char[countUnique(chars)];
-            arr = CreateUnique(chars, arr);
-            for (int i = 0; i < arr.Length; i++) { 
-                Console.Write(arr [i]);   
-            }
+            CowData();
         }
     }
 }
