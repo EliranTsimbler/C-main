@@ -223,10 +223,39 @@ namespace ConsoleApp7
             }
         }
 
+        static void task3()
+        {
+            
+            Random rnd = new Random();
+            int[] arr = new int[10];
+            for(int i = 0; i< arr.Length ; i++)            
+                arr[i] = rnd.Next(10);           
+            int[] counter = new int[10];
+            for (int i = 0; i < arr.Length; i++)
+                counter[arr[i]]++;
+
+            printArr(arr);
+            printArr(counter);
+
+            for (int i = 0; i< arr.Length; i++)
+            {               
+                
+                if (counter[arr[i]]>1)
+                {                    
+                    counter[arr[i]] = -99;                    
+                }
+                else if(counter[arr[i]] == -99)
+                {
+                    arr[i] = -1;
+                }
+            }
+            
+            printArr(arr);
+
+        }
         static void Main(string[] args)
         {
-
-            CowData();
+            task3();
         }
     }
 }
