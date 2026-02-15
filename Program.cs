@@ -253,9 +253,69 @@ namespace ConsoleApp7
             printArr(arr);
 
         }
+
+        static void task4()
+        {
+            char ch = 'a';
+            int[] count = new int[26];
+            while (ch != '.')
+            {
+                Console.Write("Enter char: ");
+                ch = char.Parse(Console.ReadLine());
+                if(ch == '.')
+                    Console.WriteLine("Exit");
+                else if (ch < 'a' || ch > 'z')
+                    Console.WriteLine("invalid input");
+                else count[ch - 'a']++;
+            }
+            for(int i = 0; i< count.Length; i++)
+            {
+                Console.WriteLine("Count for : " + (char)(i + 'a') + " is: " + count[i]) ;
+            }
+        }
+        static void task5()
+        {
+            Random rnd = new Random();
+            int[] numbers = new int[70];
+            int num = 0;
+            for(int i = 0; i<100; i++)
+            {
+                num = rnd.Next(25, 95);
+                numbers[num - 25]++;
+            }
+
+            int max = numbers[0];
+
+            int temp = 0;
+
+            printArr(numbers);
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] > max)
+                {
+                    max = numbers[i];
+                    temp = i;
+                }
+            }
+
+            Console.WriteLine(" ");
+
+            for(int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] == max)
+                {
+                    Console.WriteLine("the most common number is: " + (i + 25) + " ,count " + max);
+                }
+            }
+        }
+        static void tosk3()
+        {
+
+        }
         static void Main(string[] args)
         {
-            task3();
+            task5();
         }
     }
 }
