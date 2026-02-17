@@ -309,13 +309,45 @@ namespace ConsoleApp7
                 }
             }
         }
-        static void tosk3()
+        static int[] CampusTask1(int stores)
         {
+            int[] sum = new int[stores];
+            int purchase = 0;
 
+            for (int i =0; i<stores; i++)
+            {
+                while (purchase >= 0)
+                {
+                    Console.Write("Enter purchase for store #" + (i+1) + " ,to exit enter a negative number: ");
+                    purchase = int.Parse(Console.ReadLine());
+                    if (purchase >= 0)
+                        sum[i] += purchase;
+                }
+                purchase = 0;
+                Console.WriteLine(" ");
+            }
+            int avrg = 0;
+            for (int i = 0; i < sum.Length; i++)
+            {
+                avrg += sum[i];
+            }
+            avrg /= sum.Length;
+
+            for (int i = 0; i < sum.Length; i++)
+            {
+                if (sum[i] > avrg)
+                    Console.WriteLine("store #" + (i + 1) + " is above average with " + sum[i]);
+            }           
+            return sum;
+        }
+
+        static void CampusTask2()
+        {
+            
         }
         static void Main(string[] args)
         {
-            task5();
+            CampusTask1(3);
         }
     }
 }
