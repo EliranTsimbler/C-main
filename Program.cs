@@ -345,9 +345,121 @@ namespace ConsoleApp7
         {
             
         }
+
+        static void task6()
+        {
+            int[] numbers = new int[5];           
+            for(int i = 0; i < numbers.Length; i++)
+            {
+                Console.Write("Please enter a number: ");
+                numbers[i] = int.Parse(Console.ReadLine());
+                for(int j  = 0; j < i; j++)
+                {
+                    if(numbers[i] == numbers[j])
+                    {
+                        Console.WriteLine(" ");
+                        Console.WriteLine("You entered an already existing number, please try again!");
+                        i--;
+                        break;
+                    }
+                }
+            }
+            printArr(numbers);
+        }   
+
+        static int[] task7(int[] arr1, int[] arr2)
+        {
+            int counter = 0; int index = 0;
+            for(int i = 0;i < arr1.Length; i++)
+            {
+                for(int j = 0;j < arr2.Length; j++)
+                    if(arr1[i] == arr2[j])
+                    {
+                        counter++;
+                        break;
+                    }
+                        
+            }
+            int[] arr3 = new int[counter];
+
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    if (arr1[i] == arr2[j])
+                    {
+                        arr3[index]= arr1[i];
+                        index++;
+                        break;
+                    }
+                }                   
+            }
+
+            return arr3;
+        }
+
+
+
+        static int[] Func(int[] arr1, int[] arr2)
+        {
+            int counter = 0;
+            int index = 0;
+
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    if (arr1[i] == arr2[j])
+                    {                       
+                        break;
+                    }else counter++;
+                }               
+            }
+            
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                for (int j = 0; j < arr1.Length; j++)
+                {
+                    if (arr2[i] == arr1[j])
+                    {
+                        break;
+                    }else counter++;
+                }               
+            }
+
+            int[] arr3 = new int[counter];
+
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    if (arr1[i] == arr2[j])
+                        break;                    
+                    else arr3[index++] = arr1[i];
+                }
+            }
+
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    if (arr1[i] == arr2[j])
+                        break;                    
+                    else arr3[index++] = arr2[i];
+                }
+            }
+            return arr3;
+        }
+
         static void Main(string[] args)
         {
-            CampusTask1(3);
+            int[] arr = { 1, 2, 3, 4, 5, };
+            int[] arr1 = { 1, 2, 12};
+            int[] arr2 = Func1(arr, arr1);
+            printArr(arr);
+            printArr(arr1);
+            printArr(arr2 );
+
         }
     }
 }
